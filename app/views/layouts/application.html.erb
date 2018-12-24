@@ -10,6 +10,9 @@
   </head>
 
   <body>
+    <% flash.each do |k, v| %>
+      <%= v %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
