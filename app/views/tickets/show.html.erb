@@ -6,4 +6,7 @@
     <h2><%= @ticket.name %></h2>
   </header>
   <%= simple_format(@ticket.description) %>
+  <ul class="actions">
+    <li><%= link_to "Edit Ticket", edit_project_ticket_path(@project), class: "edit" %></li>
+  </ul>
 </div>
