@@ -1,18 +1,8 @@
-<%= form_for project do |f| %>
-  <% if project.errors.any? %>
-    <div id="error-explanation">
-      <h2><%= pluralize(project.errors.count, 'error') %> prohabited this project from being saved:</h2>
-      <ul>
-        <% @project.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div><%= f.label :name %>
-  <%= f.text_field :name %></div>
-  <div><%= f.label :description %>
-  <%= f.text_field :description %></div>
-  <div><%= f.submit  %></div>
+<%= simple_form_for project do |f| %>
+  
+  
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.button :submit, class: "btn-primary" %>
   
 <% end %>
