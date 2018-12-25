@@ -8,5 +8,6 @@
   <%= simple_format(@ticket.description) %>
   <ul class="actions">
     <li><%= link_to "Edit Ticket", edit_project_ticket_path(@project), class: "edit" %></li>
+    <li><%= link_to "Delete Ticket", project_ticket_path(@project), method: :delete, data: { confirm: "Are you sure you want to delete this ticket?"}, class: "delete" %></li>
   </ul>
 </div>
