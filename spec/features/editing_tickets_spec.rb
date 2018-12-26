@@ -1,10 +1,12 @@
 require "rails_helper"
 
 RSpec.feature "Users can edit existing tickets" do
+  let(:user) { FactoryBot.create :user }
   let(:project) { FactoryBot.create :project }
-  let(:ticket) { FactoryBot.create :ticket, project: project }
+  let(:ticket) { FactoryBot.create :ticket, project: project, author: user }
   
   before do
+    login_as(user)
     visit project_ticket_path(project, ticket)
     click_link "Edit Ticket"
   end

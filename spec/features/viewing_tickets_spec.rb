@@ -2,11 +2,12 @@ require "rails_helper"
 
 RSpec.feature "Users can view tickets" do
   before do
+    author = FactoryBot.create :user
     sublime = FactoryBot.create :project, name: "Sublime Text 3"
-    FactoryBot.create :ticket, project: sublime, name: "Make it shiny!", description: "Gradients! Starbursts! Oh my!"
+    FactoryBot.create :ticket, project: sublime, author: author, name: "Make it shiny!", description: "Gradients! Starbursts! Oh my!"
     
     ie = FactoryBot.create :project, name: "Internet Explorer"
-    FactoryBot.create :ticket, project: ie, name: "Standards compliance", description: "Isn's a joke."
+    FactoryBot.create :ticket, project: ie, author: author, name: "Standards compliance", description: "Isn's a joke."
     
     visit '/'
   end
