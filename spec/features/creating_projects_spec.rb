@@ -1,10 +1,15 @@
 require "rails_helper"
 
 RSpec.feature "Users can create new projects" do
-    scenario "with valid attributes" do
-        visit '/'
+    before do
+      login_as FactoryBot.create :user, :admin 
+      visit '/'
         
-        click_link "New Project"
+      click_link "New Project"
+    end
+    
+    scenario "with valid attributes" do
+        
         
         fill_in "Name", with: "Sublime text 3"
         fill_in "Description", with: "A text editor for everyone"
@@ -20,9 +25,6 @@ RSpec.feature "Users can create new projects" do
     end
     
     scenario "when providing invalid attributes" do
-        visit '/'
-        
-        click_link "New Project"
         click_button "Create Project"
         
         expect(page).to have_content "Project has not been created."
