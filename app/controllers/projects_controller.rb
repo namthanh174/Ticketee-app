@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   before_action :project_params, only: [:create, :update]
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   def index
-    @projects = Project.all
+    @projects = policy_scope(Project)
   end
   
   def edit
