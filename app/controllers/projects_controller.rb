@@ -5,8 +5,6 @@ class ProjectsController < ApplicationController
     @projects = Project.all
   end
   
-  
-  
   def edit
   end
   
@@ -21,7 +19,7 @@ class ProjectsController < ApplicationController
   end
   
   def show
-    
+    authorize @project, :show?
   end
   
   private

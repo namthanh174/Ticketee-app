@@ -5,10 +5,13 @@ RSpec.feature "Users can view tickets" do
     author = FactoryBot.create :user
     sublime = FactoryBot.create :project, name: "Sublime Text 3"
     FactoryBot.create :ticket, project: sublime, author: author, name: "Make it shiny!", description: "Gradients! Starbursts! Oh my!"
+    assign_role!(author, :viewer, sublime)
     
     ie = FactoryBot.create :project, name: "Internet Explorer"
     FactoryBot.create :ticket, project: ie, author: author, name: "Standards compliance", description: "Isn's a joke."
+    assign_role!(author, :viewer, ie)
     
+    login_as(author)
     visit '/'
   end
   
