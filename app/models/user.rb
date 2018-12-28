@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   scope :excluding_archived, lambda { where(archived_at: nil) }
+  has_many :roles
   
   def archive
     self.update(archived_at: Time.now)
@@ -16,6 +17,10 @@ class User < ApplicationRecord
   
   def inactive_message
     archived_at.nil? ? super : :archived   
+  end
+  
+  def role_on(project)
+    roles.find_by(project_id: project).try(:name)
   end
   
   def to_s
