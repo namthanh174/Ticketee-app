@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   resources :projects, only: [:show, :edit, :update, :index] do
     resources :tickets
   end
+  resources :attachments, only: [:show]
 end
